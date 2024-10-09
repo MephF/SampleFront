@@ -1,20 +1,30 @@
+const valor1 = localStorage.getItem('frontImage');
+const valor2 = localStorage.getItem('backImage');
+const valor3 = localStorage.getItem('result');
+console.log(valor1,"front")
+console.log(valor2,"back")
+console.log(valor3,"result")
 $(document).ready(function() {
     const urlParams = new URLSearchParams(window.location.search);
-    const data = JSON.parse(decodeURIComponent(urlParams.get('data')));
+    const dataParam = urlParams.get('data');
+    
+    if (dataParam) {
+        const data = JSON.parse(decodeURIComponent(dataParam));
 
-    // Populate form fields
-    $('#documentType').val(data.documentType);
-    $('#documentNumber').val(data.documentNumber);
-    $('#firstName').val(data.firstName);
-    $('#secondName').val(data.secondName);
-    $('#firstLastName').val(data.firstLastName);
-    $('#secondLastName').val(data.SecondLastName);
-    $('#birthDay').val(data.birthDay);
-    $('#biologicalSex').val(data.biologicalSex);
-    $('#telephoneNumber').val(data.telephoneNumber);
-    $('#address').val(data.address);
-    $('#foreigner').val(data.foreigner);
-    $('#residenceCity').val(data.ResidenceCity);
+        // Populate form fields safely by checking if each field exists
+        if (data.documentType) $('#documentType').val(data.documentType);
+        if (data.documentNumber) $('#documentNumber').val(data.documentNumber);
+        if (data.firstName) $('#firstName').val(data.firstName);
+        if (data.secondName) $('#secondName').val(data.secondName);
+        if (data.firstLastName) $('#firstLastName').val(data.firstLastName);
+        if (data.secondLastName) $('#secondLastName').val(data.secondLastName); // Corrige el typo (antes 'SecondLastName')
+        if (data.birthDay) $('#birthDay').val(data.birthDay);
+        if (data.biologicalSex) $('#biologicalSex').val(data.biologicalSex);
+        if (data.telephoneNumber) $('#telephoneNumber').val(data.telephoneNumber);
+        if (data.address) $('#address').val(data.address);
+        if (data.foreigner) $('#foreigner').val(data.foreigner);
+        if (data.residenceCity) $('#residenceCity').val(data.residenceCity); // Corrige el typo (antes 'ResidenceCity')
+    } 
 
     // Edit button functionality
     $('#editBtn').click(function() {
@@ -28,7 +38,7 @@ $(document).ready(function() {
         $('input').prop('readonly', true);
         $(this).hide();
         $('#editBtn').show();
-        // Here you would typically send the updated data to the server
+        // Aquí normalmente enviarías los datos actualizados al servidor
         alert('Cambios guardados');
     });
 
