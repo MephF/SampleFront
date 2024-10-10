@@ -38,10 +38,6 @@ $(document).ready(function() {
         $('#editBtn').show();
         // Aquí normalmente enviarías los datos actualizados al servidor
         alert('Cambios guardados');
-    });
-
-    // Print button functionality
-    $('#printBtn').click(function() {
-        window.print();
+        window.location.href = 'index.html';
     });
 });
