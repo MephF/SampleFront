@@ -2,19 +2,19 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Medifolios - Datos del Documento</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar navbar-dark">
-    <div class="container">
-        <a class="navbar-brand" href="#">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logos%20Medifolios1%20(1)%20(1)%20(2)%20(1)-uC0ApcCfV5LWyB9jlEDpk5LVlEnwe6.png" alt="Medifolios Logo" height="30">
-        </a>
-    </div>
+<nav class="navbar navbar-dark" id="navbar-barra">
+    <a class="navbar-brand" href="#">
+        <img alt="Medifolios Logo"
+             height="30"
+             id="imagePreview" src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logos%20Medifolios1%20(1)%20(1)%20(2)%20(1)-uC0ApcCfV5LWyB9jlEDpk5LVlEnwe6.png">
+    </a>
 </nav>
 
 <div class="container mt-5">
@@ -28,72 +28,72 @@
                     <form id="documentForm">
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="documentType" class="form-label">Tipo de Documento</label>
-                                <input type="text" class="form-control" id="documentType" readonly>
+                                <label class="form-label" for="documentType">Tipo de Documento</label>
+                                <input class="form-control" id="documentType" readonly type="text">
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="documentNumber" class="form-label">Número de Documento</label>
-                                <input type="text" class="form-control" id="documentNumber" readonly>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="firstName" class="form-label">Primer Nombre</label>
-                                <input type="text" class="form-control" id="firstName" readonly>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="secondName" class="form-label">Segundo Nombre</label>
-                                <input type="text" class="form-control" id="secondName" readonly>
+                                <label class="form-label" for="documentNumber">Número de Documento</label>
+                                <input class="form-control" id="documentNumber" readonly type="text">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="firstLastName" class="form-label">Primer Apellido</label>
-                                <input type="text" class="form-control" id="firstLastName" readonly>
+                                <label class="form-label" for="firstName">Primer Nombre</label>
+                                <input class="form-control" id="firstName" readonly type="text">
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="secondLastName" class="form-label">Segundo Apellido</label>
-                                <input type="text" class="form-control" id="secondLastName" readonly>
+                                <label class="form-label" for="secondName">Segundo Nombre</label>
+                                <input class="form-control" id="secondName" readonly type="text">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="birthDay" class="form-label">Fecha de Nacimiento</label>
-                                <input type="text" class="form-control" id="birthDay" readonly>
+                                <label class="form-label" for="firstLastName">Primer Apellido</label>
+                                <input class="form-control" id="firstLastName" readonly type="text">
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="biologicalSex" class="form-label">Sexo Biológico</label>
-                                <input type="text" class="form-control" id="biologicalSex" readonly>
+                                <label class="form-label" for="secondLastName">Segundo Apellido</label>
+                                <input class="form-control" id="secondLastName" readonly type="text">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label" for="birthDay">Fecha de Nacimiento</label>
+                                <input class="form-control" id="birthDay" readonly type="text">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label" for="biologicalSex">Sexo Biológico</label>
+                                <input class="form-control" id="biologicalSex" readonly type="text">
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label for="telephoneNumber" class="form-label">Número de Teléfono</label>
-                            <input type="text" class="form-control" id="telephoneNumber" readonly>
+                            <label class="form-label" for="telephoneNumber">Número de Teléfono</label>
+                            <input class="form-control" id="telephoneNumber" readonly type="text">
                         </div>
                         <div class="mb-3">
-                            <label for="address" class="form-label">Dirección</label>
-                            <input type="text" class="form-control" id="address" readonly>
+                            <label class="form-label" for="address">Dirección</label>
+                            <input class="form-control" id="address" readonly type="text">
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="foreigner" class="form-label">Extranjero</label>
-                                <input type="text" class="form-control" id="foreigner" readonly>
+                                <label class="form-label" for="foreigner">Extranjero</label>
+                                <input class="form-control" id="foreigner" readonly type="text">
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="residenceCity" class="form-label">Ciudad de Residencia</label>
-                                <input type="text" class="form-control" id="residenceCity" readonly>
+                                <label class="form-label" for="residenceCity">Ciudad de Residencia</label>
+                                <input class="form-control" id="residenceCity" readonly type="text">
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="card-footer text-center">
-                    <button id="editBtn" class="btn btn-primary me-2">
+                    <button class="btn btn-primary me-2" id="editBtn">
                         <i class="fas fa-edit"></i> Editar
                     </button>
-                    <button id="saveBtn" class="btn btn-success me-2" style="display: none;">
+                    <button class="btn btn-success me-2" id="saveBtn" style="display: none;">
                         <i class="fas fa-save"></i> Guardar
                     </button>
-                    <button id="printBtn" class="btn btn-secondary">
+                    <button class="btn btn-secondary" id="printBtn">
                         <i class="fas fa-print"></i> Imprimir
                     </button>
                 </div>

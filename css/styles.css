@@ -18,9 +18,14 @@ body {
     border-color: var(--primary-color);
 }
 
+/* Agregué estilos para los estados de hover y focus */
 .btn-primary:hover {
     background-color: #0056b3;
     border-color: #0056b3;
+}
+
+.btn-primary:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
 }
 
 .card {
@@ -45,8 +50,44 @@ body {
     height: auto;
 }
 
-#imagePreview {
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+    #imagePreview {
+        width: 90px; /* Aumentado en 10px */
+        margin-left: 10px; /* Mantén el margen ajustado */
+    }
+}
+
+/* Estilos para dispositivos medianos */
+@media (min-width: 601px) and (max-width: 1200px) {
+    .container {
+        padding: 20px;
+    }
+    #imagePreview {
+        width: 110px; /* Aumentado en 10px */
+        margin-left: 15px; /* Mantén el margen ajustado */
+    }
+}
+
+/* Estilos para dispositivos grandes */
+@media (min-width: 1201px) {
+    .container {
+        padding: 30px;
+    }
+    #imagePreview {
+        width: 130px; 
+        margin-left: 20px;
+    }
+}
+
+#imagePreview {    
+    display: block;
     max-width: 100%;
     height: auto;
-    margin-top: 10px;
+}
+#myNavbar {
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 1));
+
 }
