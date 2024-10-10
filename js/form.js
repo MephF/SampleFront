@@ -38,6 +38,6 @@ $(document).ready(function() {
         $('#editBtn').show();
         // Aquí normalmente enviarías los datos actualizados al servidor
         alert('Cambios guardados');
-        window.location.href = 'index.html';
+        window.location.href = 'https://mephf.github.io/SampleFrontMediFolios/';
     });
 });
