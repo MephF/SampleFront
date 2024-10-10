@@ -77,14 +77,17 @@ body {
         padding: 30px;
     }
     #imagePreview {
-        width: 130px; /* Aumentado en 10px */
-        margin-left: 20px; /* Mantén el margen ajustado */
+        width: 130px; 
+        margin-left: 20px;
     }
 }
 
-#imagePreview {
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 5));
+#imagePreview {    
     display: block;
     max-width: 100%;
     height: auto;
+}
+#myNavbar {
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 1));
+
 }

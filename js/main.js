@@ -1,5 +1,8 @@
 $(document).ready(function() {
-    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    const statusElement = document.getElementById('status');
+        
+  
+   
     let currentSide = 'front'; // Identificar si se captura la parte frontal o trasera del documento
     let frontImage, backImage; // Variables para almacenar las imágenes en base64
     const video = document.getElementById('video'); // Video para capturar la imagen
@@ -102,8 +105,8 @@ $(document).ready(function() {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    image1: frontImage, // Utiliza la imagen frontal
-                    image2: backImage   // Utiliza la imagen trasera
+                    image1: frontImage, 
+                    image2: backImage   
                 })
             });
             if (!response.ok) {
@@ -118,15 +121,15 @@ $(document).ready(function() {
             console.log('Respuesta del servidor:', result);
 
             // Guardar la respuesta en el localStorage si es necesario
-            localStorage.setItem('respuesta', JSON.stringify(result));
+            localStorage.setItem('result', JSON.stringify(result));
 
             // Redirigir a otra página si es necesario
-            window.location.href = 'form.html';
+          window.location.href = 'form.html';
 
         } catch (error) {
             console.error('Error al enviar las imágenes:', error);
         }
     }
-}
+
 
 });
