@@ -97,39 +97,29 @@ $(document).ready(function() {
     }
 
     // Función para enviar las imágenes al servidor
-    async function sendImages() {
-        try {
-            const response = await fetch('http://127.0.0.1:8000/api/uploadImage', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    image1: frontImage, 
-                    image2: backImage   
-                })
-            });
-            if (!response.ok) {
-                console.error('Error en la respuesta del servidor:', response.status, response.statusText);
-                alert('Error al enviar las imágenes. Por favor, inténtalo de nuevo.');
-                return;
-            }
+    function sendImages() {
+        $.ajax({
+            url: 'http://127.0.0.1:8000/api/uploadImage',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                image1: frontImage,
+                image2: backImage
+            }),
+            success: function(result) {
+                // Guardar la respuesta en el localStorage si es necesario
+                localStorage.setItem('result', JSON.stringify(result));
     
-
-            // Procesar la respuesta del servidor
-            const result = await response.json();
-            console.log('Respuesta del servidor:', result);
-
-            // Guardar la respuesta en el localStorage si es necesario
-            localStorage.setItem('result', JSON.stringify(result));
-
-            // Redirigir a otra página si es necesario
-          window.location.href = 'form.html';
-
-        } catch (error) {
-            console.error('Error al enviar las imágenes:', error);
-        }
+                // Redirigir a otra página si es necesario
+                window.location.href = 'form.html';
+            },
+            error: function(xhr, status, error) {
+                console.error('Error en la respuesta del servidor:', xhr.status, xhr.statusText);
+                alert('Error al enviar las imágenes. Por favor, inténtalo de nuevo.');
+            }
+        });
     }
+    
 
 
 });
