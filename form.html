@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -8,127 +9,162 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
 </head>
-<body>
-<nav class="navbar navbar-dark" id="navbar-barra">
-    <a class="navbar-brand" href="index.html">
-        <img alt="Medifolios Logo"
-             height="30"
-             id="imagePreview" src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logos%20Medifolios1%20(1)%20(1)%20(2)%20(1)-uC0ApcCfV5LWyB9jlEDpk5LVlEnwe6.png">
-    </a>
-</nav>
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="mb-0">Datos del Documento</h2>
-                </div>
-                <div class="card-body">
-                    <form id="documentForm" novalidate>
-                        <div class="row">
-                            <!-- Tipo de Documento -->
-                            <div class="col-md-6 mb-3">
-                                <label for="documentType" class="form-label">Tipo de Documento</label>
-                                <select id="documentType" class="form-control">
-                                    <option value="">Seleccione...</option>
-                                    <option value="CC">Cédula de Ciudadanía</option>
-                                    <option value="TI">Tarjeta de Identidad</option>
-                                    <option value="CE">Cédula de Extranjería</option>
-                                </select>
-                                <small class="text-danger" id="documentTypeError"></small>
+<body>
+    <nav class="navbar navbar-dark" id="navbar-barra">
+        <a class="navbar-brand" href="index.html">
+            <img alt="Medifolios Logo" height="30" id="imagePreview"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logos%20Medifolios1%20(1)%20(1)%20(2)%20(1)-uC0ApcCfV5LWyB9jlEDpk5LVlEnwe6.png">
+        </a>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="mb-0">Datos del Documento</h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="documentForm" novalidate>
+                            <div class="row">
+                                <!-- Tipo de Documento -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="documentType" class="form-label">Tipo de Documento</label>
+                                    <select id="documentType" class="form-control">
+                                        <option value="">Seleccione...</option>
+                                        <option value="CC">Cédula de Ciudadanía</option>
+                                        <option value="TI">Tarjeta de Identidad</option>
+                                        <option value="CE">Cédula de Extranjería</option>
+                                    </select>
+                                    <small class="text-danger" id="documentTypeError"></small>
+                                </div>
+                                <!-- Número de Documento -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="documentNumber" class="form-label">Número de Documento</label>
+                                    <input type="text" class="form-control" id="documentNumber">
+                                    <small class="text-danger" id="documentNumberError"></small>
+                                </div>
                             </div>
-                            <!-- Número de Documento -->
-                            <div class="col-md-6 mb-3">
-                                <label for="documentNumber" class="form-label">Número de Documento</label>
-                                <input type="text" class="form-control" id="documentNumber">
-                                <small class="text-danger" id="documentNumberError"></small>
+                            <div class="row">
+                                <!-- Primer Nombre -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="firstName" class="form-label">Primer Nombre</label>
+                                    <input type="text" class="form-control" id="firstName">
+                                    <small class="text-danger" id="firstNameError"></small>
+                                </div>
+                                <!-- Segundo Nombre -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="secondName" class="form-label">Segundo Nombre</label>
+                                    <input type="text" class="form-control" id="secondName">
+                                    <small class="text-danger" id="secondNameError"></small>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <!-- Primer Nombre -->
-                            <div class="col-md-6 mb-3">
-                                <label for="firstName" class="form-label">Primer Nombre</label>
-                                <input type="text" class="form-control" id="firstName">
-                                <small class="text-danger" id="firstNameError"></small>
+                            <div class="row">
+                                <!-- Fecha de Nacimiento -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="birthDay" class="form-label">Fecha de Nacimiento</label>
+                                    <input type="date" class="form-control" id="birthDay">
+                                    <small class="text-danger" id="birthDayError"></small>
+                                </div>
+                                <!-- Sexo Biológico -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="biologicalSex" class="form-label">Sexo Biológico</label>
+                                    <select id="biologicalSex" class="form-control">
+                                        <option value="">Seleccione...</option>
+                                        <option value="M">Masculino</option>
+                                        <option value="F">Femenino</option>
+                                        <option value="I">Indefinido</option>
+                                    </select>
+                                    <small class="text-danger" id="biologicalSexError"></small>
+                                </div>
                             </div>
-                            <!-- Segundo Nombre -->
-                            <div class="col-md-6 mb-3">
-                                <label for="secondName" class="form-label">Segundo Nombre</label>
-                                <input type="text" class="form-control" id="secondName">
-                                <small class="text-danger" id="secondNameError"></small>
+                            <!-- Número de Teléfono -->
+                            <div class="mb-3">
+                                <label for="telephoneNumber" class="form-label">Número de Teléfono</label>
+                                <input type="text" class="form-control" id="telephoneNumber">
+                                <small class="text-danger" id="telephoneNumberError"></small>
                             </div>
-                        </div>
-                        <div class="row">
-                            <!-- Fecha de Nacimiento -->
-                            <div class="col-md-6 mb-3">
-                                <label for="birthDay" class="form-label">Fecha de Nacimiento</label>
-                                <input type="date" class="form-control" id="birthDay">
-                                <small class="text-danger" id="birthDayError"></small>
+                            <!-- Dirección -->
+                            <div class="mb-3">
+                                <label for="address" class="form-label">Dirección</label>
+                                <input type="text" class="form-control" id="address">
+                                <small class="text-danger" id="addressError"></small>
                             </div>
-                            <!-- Sexo Biológico -->
-                            <div class="col-md-6 mb-3">
-                                <label for="biologicalSex" class="form-label">Sexo Biológico</label>
-                                <select id="biologicalSex" class="form-control">
-                                    <option value="">Seleccione...</option>
-                                    <option value="M">Masculino</option>
-                                    <option value="F">Femenino</option>
-                                    <option value="I">Indefinido</option>
-                                </select>
-                                <small class="text-danger" id="biologicalSexError"></small>
+                            <div class="row">
+                                <!-- Extranjero -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="foreigner" class="form-label">Extranjero</label>
+                                    <select id="foreigner" class="form-control" onchange="toggleCountryField()">
+                                        <option value="">Seleccione...</option>
+                                        <option value="No">No</option>
+                                        <option value="Sí">Sí</option>
+                                    </select>
+                                    <small class="text-danger" id="foreignerError"></small>
+                                </div>
+                                <!-- País de origen (Solo si es extranjero) -->
+                                <div class="col-md-6 mb-3" id="countryField" style="display: none;">
+                                    <label for="country" class="form-label">País de Origen</label>
+                                    <input type="text" class="form-control" id="country">
+                                    <small class="text-danger" id="countryError"></small>
+                                </div>
+                                <!-- Ciudad de Residencia -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="residenceCity" class="form-label">Ciudad de Residencia</label>
+                                    <select id="residenceCity" class="form-control">
+                                        <option value="">Seleccione...</option>
+                                        <option value="BOG">Bogotá</option>
+                                        <option value="MED">Medellín</option>
+                                        <option value="CALI">Cali</option>
+                                        <option value="BAR">Barranquilla</option>
+                                        <option value="CART">Cartagena</option>
+                                        <option value="CUNC">Cúcuta</option>
+                                        <option value="PERE">Pereira</option>
+                                        <option value="BUC">Bucaramanga</option>
+                                        <option value="NEIVA">Neiva</option>
+                                        <option value="TUL">Tulúa</option>
+                                        <option value="MANIZ">Manizales</option>
+                                        <option value="SANTA">Santa Marta</option>
+                                        <option value="VILL">Villavicencio</option>
+                                        <option value="IBAG">Ibagué</option>
+                                        <option value="VALLE">Valledupar</option>
+                                        <option value="SIN">Sincelejo</option>
+                                        <option value="CARTAG">Cartago</option>
+                                        <option value="MAG">Magangué</option>
+                                        <option value="TUN">Tunja</option>
+                                        <option value="QUIB">Quibdó</option>
+                                        <option value="PAST">Pasto</option>
+                                        <option value="LET">Leticia</option>
+                                        <option value="YOP">Yopal</option>
+                                        <option value="POP">Popayán</option>
+                                        <option value="MONG">Montería</option>
+                                        <option value="SOG">Sogamoso</option>
+                                        <option value="MAL">Malambo</option>
+                                        <option value="AGU">Agua de Dios</option>
+                                        <option value="SAMP">San Andrés</option>
+                                        <option value="SUCRE">Sucre</option>
+                                        <option value="TOL">Tolú</option>
+                                    </select>
+                                    <small class="text-danger" id="residenceCityError"></small>
+                                </div>
+
                             </div>
-                        </div>
-                        <!-- Número de Teléfono -->
-                        <div class="mb-3">
-                            <label for="telephoneNumber" class="form-label">Número de Teléfono</label>
-                            <input type="text" class="form-control" id="telephoneNumber">
-                            <small class="text-danger" id="telephoneNumberError"></small>
-                        </div>
-                        <!-- Dirección -->
-                        <div class="mb-3">
-                            <label for="address" class="form-label">Dirección</label>
-                            <input type="text" class="form-control" id="address">
-                            <small class="text-danger" id="addressError"></small>
-                        </div>
-                        <div class="row">
-                            <!-- Extranjero -->
-                            <div class="col-md-6 mb-3">
-                                <label for="foreigner" class="form-label">Extranjero</label>
-                                <select id="foreigner" class="form-control" onchange="toggleCountryField()">
-                                    <option value="">Seleccione...</option>
-                                    <option value="No">No</option>
-                                    <option value="Sí">Sí</option>
-                                </select>
-                                <small class="text-danger" id="foreignerError"></small>
-                            </div>
-                            <!-- País de origen (Solo si es extranjero) -->
-                            <div class="col-md-6 mb-3" id="countryField" style="display: none;">
-                                <label for="country" class="form-label">País de Origen</label>
-                                <input type="text" class="form-control" id="country">
-                                <small class="text-danger" id="countryError"></small>
-                            </div>
-                            <!-- Ciudad de Residencia -->
-                            <div class="col-md-6 mb-3">
-                                <label for="residenceCity" class="form-label">Ciudad de Residencia</label>
-                                <input type="text" class="form-control" id="residenceCity">
-                                <small class="text-danger" id="residenceCityError"></small>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="card-footer text-center">
-                    <button id="saveBtn" class="btn btn-success me-2" type="submit" onclick="validateForm(event)">
-                        <i class="fas fa-save"></i> Guardar
-                    </button>
+                        </form>
+                    </div>
+                    <div class="card-footer text-center">
+                        <button id="saveBtn" class="btn btn-success me-2" type="submit" onclick="validateForm(event)">
+                            <i class="fas fa-save"></i> Guardar
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/form.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/form.js"></script>
 </body>
+
 </html>
