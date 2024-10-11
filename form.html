@@ -160,6 +160,114 @@
             </div>
         </div>
     </div>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="mb-0">Datos del Paciente</h2>
+                </div>
+                <div class="card-body">
+                    <form id="documentForm" novalidate>
+                        <div class="row">
+                            <!-- Tipo de Documento -->
+                            <div class="col-md-6 mb-3">
+                                <label for="documentType" class="form-label">Tipo de Documento</label>
+                                <select id="documentType" class="form-control">
+                                    <option value="">Seleccione...</option>
+                                    <option value="CC">Cédula de Ciudadanía</option>
+                                    <option value="TI">Tarjeta de Identidad</option>
+                                    <option value="CE">Cédula de Extranjería</option>
+                                </select>
+                                <small class="text-danger" id="documentTypeError"></small>
+                            </div>
+                            <!-- Número de Documento -->
+                            <div class="col-md-6 mb-3">
+                                <label for="documentNumber" class="form-label">Número de Documento</label>
+                                <input type="text" class="form-control" id="documentNumber">
+                                <small class="text-danger" id="documentNumberError"></small>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- Primer Nombre -->
+                            <div class="col-md-6 mb-3">
+                                <label for="firstName" class="form-label">Primer Nombre</label>
+                                <input type="text" class="form-control" id="firstName">
+                                <small class="text-danger" id="firstNameError"></small>
+                            </div>
+                            <!-- Segundo Nombre -->
+                            <div class="col-md-6 mb-3">
+                                <label for="secondName" class="form-label">Segundo Nombre</label>
+                                <input type="text" class="form-control" id="secondName">
+                                <small class="text-danger" id="secondNameError"></small>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- Fecha de Nacimiento -->
+                            <div class="col-md-6 mb-3">
+                                <label for="birthDay" class="form-label">Fecha de Nacimiento</label>
+                                <input type="date" class="form-control" id="birthDay">
+                                <small class="text-danger" id="birthDayError"></small>
+                            </div>
+                            <!-- Sexo Biológico -->
+                            <div class="col-md-6 mb-3">
+                                <label for="biologicalSex" class="form-label">Sexo Biológico</label>
+                                <select id="biologicalSex" class="form-control">
+                                    <option value="">Seleccione...</option>
+                                    <option value="M">Masculino</option>
+                                    <option value="F">Femenino</option>
+                                    <option value="I">Indefinido</option>
+                                </select>
+                                <small class="text-danger" id="biologicalSexError"></small>
+                            </div>
+                        </div>
+                        <!-- Número de Teléfono -->
+                        <div class="mb-3">
+                            <label for="telephoneNumber" class="form-label">Número de Teléfono</label>
+                            <input type="text" class="form-control" id="telephoneNumber">
+                            <small class="text-danger" id="telephoneNumberError"></small>
+                        </div>
+                        <!-- Dirección -->
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Dirección</label>
+                            <input type="text" class="form-control" id="address">
+                            <small class="text-danger" id="addressError"></small>
+                        </div>
+                        <div class="row">
+                            <!-- Extranjero -->
+                            <div class="col-md-6 mb-3">
+                                <label for="foreigner" class="form-label">Extranjero</label>
+                                <select id="foreigner" class="form-control" onchange="toggleCountryField()">
+                                    <option value="">Seleccione...</option>
+                                    <option value="No">No</option>
+                                    <option value="Sí">Sí</option>
+                                </select>
+                                <small class="text-danger" id="foreignerError"></small>
+                            </div>
+                            <!-- País de origen (Solo si es extranjero) -->
+                            <div class="col-md-6 mb-3" id="countryField" style="display: none;">
+                                <label for="country" class="form-label">País de Origen</label>
+                                <input type="text" class="form-control" id="country">
+                                <small class="text-danger" id="countryError"></small>
+                            </div>
+                            <!-- Ciudad de Residencia -->
+                            <div class="col-md-6 mb-3">
+                                <label for="residenceCity" class="form-label">Ciudad de Residencia</label>
+                                <input type="text" class="form-control" id="residenceCity">
+                                <small class="text-danger" id="residenceCityError"></small>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center">
+                    <button id="saveBtn" class="btn btn-success me-2" type="submit" onclick="validateForm(event)">
+                        <i class="fas fa-save"></i> Guardar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
