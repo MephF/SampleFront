@@ -22,7 +22,7 @@ $(document).ready(function() {
         if (data.address) $('#address').val(data.address);
         if (data.foreigner) $('#foreigner').val(data.foreigner);
         if (data.ResidenceCity) $('#residenceCity').val(data.ResidenceCity); 
-        console.log('Residence City:', data.ResidenceCity);
+
 
     } else {
         console.error("No se encontraron datos en localStorage");

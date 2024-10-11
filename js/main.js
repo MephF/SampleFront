@@ -8,6 +8,7 @@ $(document).ready(function() {
     const mobileInput = document.getElementById('mobileInput');
     const cameraModal = new bootstrap.Modal(document.getElementById('cameraModal'));
     const errorMessage = document.getElementById('errorMessage');
+    const totalPhotos = 2; 
 
     captureBtn.addEventListener('click', async () => {
         if (isMobileDevice()) {
@@ -84,14 +85,19 @@ $(document).ready(function() {
         canvas.height = video.videoHeight;
         canvas.getContext('2d').drawImage(video, 0, 0);
         const image = canvas.toDataURL('image/jpeg');
+        const progressElement = document.getElementById('progress'); 
+
         if (currentSide === 'front') {
             frontImage = image;
             currentSide = 'back';
-            alert('Foto frontal capturada. Ahora capture el reverso del documento.');
+        
+            progressElement.textContent = '1/2';
         } else {
             backImage = image;
             cameraModal.hide();
-            saveImages();
+
+            progressElement.textContent = '2/2';
+            saveImages(); 
         }
     }
 
