@@ -3,7 +3,7 @@ const valor2 = localStorage.getItem('backImage');
 const valor3 = localStorage.getItem('result');
 console.log(valor1);
 console.log(valor2);
-
+console.log(valor3);
 $(document).ready(function() {
     const resultado = JSON.parse(localStorage.getItem('result'));
     if (resultado && resultado.data) {
@@ -21,7 +21,9 @@ $(document).ready(function() {
         if (data.telephoneNumber) $('#telephoneNumber').val(data.telephoneNumber);
         if (data.address) $('#address').val(data.address);
         if (data.foreigner) $('#foreigner').val(data.foreigner);
-        if (data.residenceCity) $('#residenceCity').val(data.residenceCity);
+        if (data.ResidenceCity) $('#residenceCity').val(data.ResidenceCity); 
+        console.log('Residence City:', data.ResidenceCity);
+
     } else {
         console.error("No se encontraron datos en localStorage");
     }
