@@ -1,6 +1,7 @@
 $(document).ready(function() {
     const statusElement = document.getElementById('status');
-    let currentSide = 'front';
+    let currentSide ;
+    let site='front';
     let frontImage, backImage;
     const video = document.getElementById('video');
     const canvas = document.getElementById('canvas');
@@ -8,7 +9,6 @@ $(document).ready(function() {
     const mobileInput = document.getElementById('mobileInput');
     const cameraModal = new bootstrap.Modal(document.getElementById('cameraModal'));
     const errorMessage = document.getElementById('errorMessage');
-    const totalPhotos = 2; 
 
     captureBtn.addEventListener('click', async () => {
         if (isMobileDevice()) {
@@ -40,9 +40,9 @@ $(document).ready(function() {
             const reader = new FileReader();
             reader.onload = function(e) {
                 const image = e.target.result;
-                if (currentSide === 'front') {
+                if (site === 'front') {
                     frontImage = image;
-                    currentSide = 'back';
+                    site = 'back';
                     alert('Foto frontal capturada. Ahora capture el reverso del documento.');
                 } else {
                     backImage = image;
@@ -70,7 +70,7 @@ $(document).ready(function() {
     async function startCamera() {
         try {
             const stream = await navigator.mediaDevices.getUserMedia({
-                video: { facingMode: { exact: currentSide === 'front' ? 'user' : 'environment' } }
+                video: { facingMode: { exact: 'front' ? 'user' : 'environment' } }
             });
             video.srcObject = stream;
         } catch (error) {
@@ -86,11 +86,14 @@ $(document).ready(function() {
         canvas.getContext('2d').drawImage(video, 0, 0);
         const image = canvas.toDataURL('image/jpeg');
         const progressElement = document.getElementById('progress'); 
+        if(frontImage===null&&backImage===null){
+            progressElement.textContent = '0/0';
+        }
 
-        if (currentSide === 'front') {
+        if (site === 'front') {
             frontImage = image;
-            currentSide = 'back';
-        
+            site = 'back';
+            
             progressElement.textContent = '1/2';
         } else {
             backImage = image;
@@ -106,10 +109,12 @@ $(document).ready(function() {
             localStorage.setItem('frontImage', frontImage);
             localStorage.setItem('backImage', backImage);
             sendImages();
+            cameraModal.hide();  
         } else {
             alert('Asegúrese de capturar ambas imágenes antes de continuar.');
         }
     }
+    
 
     function sendImages() {
         $.ajax({
