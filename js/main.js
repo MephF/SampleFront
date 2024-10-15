@@ -1,15 +1,19 @@
 $(document).ready(function() {
     const statusElement = document.getElementById('status');
-    let currentSide ;
+    let currentSide='front' ;
     let site='front';
     let frontImage, backImage;
     const video = document.getElementById('video');
     const canvas = document.getElementById('canvas');
     const captureBtn = document.getElementById('captureBtn');
     const mobileInput = document.getElementById('mobileInput');
-    const cameraModal = new bootstrap.Modal(document.getElementById('cameraModal'));
     const errorMessage = document.getElementById('errorMessage');
+    const cameraModal = new bootstrap.Modal(document.getElementById('cameraModal'));
+    const progressMobile= document.getElementById('progressMobile');
 
+      if(/Mobi|Android/i.test(navigator.userAgent)){
+progressMobile.textContent='0/2';
+      }
     captureBtn.addEventListener('click', async () => {
         if (isMobileDevice()) {
             mobileInput.click();
@@ -34,22 +38,59 @@ $(document).ready(function() {
         }
     });
 
+    function reduceImageQuality(file, quality, callback) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const img = new Image();
+            img.src = e.target.result;
+    
+            img.onload = function() {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                
+                // Redimensionar el canvas para igualar el tamaño de la imagen original
+                canvas.width = img.width;
+                canvas.height = img.height;
+    
+                // Dibujar la imagen en el canvas
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                
+                // Convertir la imagen a formato base64 con la calidad reducida
+                const compressedImage = canvas.toDataURL('image/jpeg', quality); // quality entre 0 y 1
+                
+                callback(compressedImage);
+            };
+        };
+        reader.readAsDataURL(file);
+    }
+    
     mobileInput.addEventListener('change', (event) => {
+    
         const file = event.target.files[0];
         if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const image = e.target.result;
+            // Validar si es un archivo de imagen
+            if (!file.type.startsWith('image/')) {
+                alert('Por favor, selecciona un archivo de imagen válido.');
+                return;
+            }
+           
+        
+            reduceImageQuality(file, 0.7, (compressedImage) => {
                 if (site === 'front') {
-                    frontImage = image;
-                    site = 'back';
-                    alert('Foto frontal capturada. Ahora capture el reverso del documento.');
+                    frontImage = compressedImage;
+                    progressMobile.textContent='1/2';
+                    site = 'back'; 
+                    
                 } else {
-                    backImage = image;
-                    saveImages();
+                    backImage = compressedImage;
+                    progressMobile.textContent='2/2';
+                    setTimeout(saveImages,300);
+                   
+                  
                 }
-            };
-            reader.readAsDataURL(file);
+            });
+        } else {
+            alert('No se seleccionó ningún archivo. Por favor, inténtalo de nuevo.');
         }
     });
 
@@ -70,7 +111,7 @@ $(document).ready(function() {
     async function startCamera() {
         try {
             const stream = await navigator.mediaDevices.getUserMedia({
-                video: { facingMode: { exact: 'front' ? 'user' : 'environment' } }
+                video: { facingMode: currentSide === 'front' ? 'user' : 'environment' }
             });
             video.srcObject = stream;
         } catch (error) {
@@ -79,6 +120,7 @@ $(document).ready(function() {
             console.error('Error al acceder a la cámara:', error);
         }
     }
+    
 
     function capturePhoto() {
         canvas.width = video.videoWidth;
@@ -117,8 +159,9 @@ $(document).ready(function() {
     
 
     function sendImages() {
+        /*
         $.ajax({
-            url: 'http://127.0.0.1:8000/api/uploadImage',
+            url: 'http://192.168.0.116:8000/api/uploadImage',
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({
@@ -134,6 +177,8 @@ $(document).ready(function() {
                 alert('Error al enviar las imágenes. Por favor, inténtalo de nuevo.');
             }
         });
+        */
+        window.location.href = 'form.html';
     }
 
     function isMobileDevice() {

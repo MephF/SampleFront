@@ -1,9 +1,7 @@
 const valor1 = localStorage.getItem('frontImage');
 const valor2 = localStorage.getItem('backImage');
 const valor3 = localStorage.getItem('result');
-console.log(valor1);
-console.log(valor2);
-console.log(valor3);
+
 $(document).ready(function() {
     const resultado = JSON.parse(localStorage.getItem('result'));
     if (resultado && resultado.data) {
